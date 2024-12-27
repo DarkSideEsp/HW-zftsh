@@ -14,20 +14,20 @@ public:
     bigInteger(): block_size(2), sign(false), num_ptr(new vector<int> (1, 0)){}
 
     bigInteger(int num): block_size(2), sign(false), num_ptr(new vector<int>){
-        if(num < 0) this->sign = true;
+        if(num < 0) sign = true;
 
         while(num != 0){
-            for(int i = 0; i < this->block_size; i++){
-                this->num_ptr->push_back(num % 10);
+            for(int i = 0; i < block_size; i++){
+                num_ptr->push_back(num % 10);
                 num /= 10;
             }
         }
-        reverse(this->num_ptr->begin(), this->num_ptr->end());
+        reverse(num_ptr->begin(), num_ptr->end());
     }
 
     ~bigInteger(){
-        delete this->num_ptr;
-        this->num_ptr = nullptr;
+        delete num_ptr;
+        num_ptr = nullptr;
     }
 };
 
